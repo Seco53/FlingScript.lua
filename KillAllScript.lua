@@ -77,7 +77,7 @@ TextButton_3.TextWrapped = true
 
 -- Scripts:
 
-local function BIQZXQ_fake_script() -- Frame.LocalScript 
+local function GSFPZVA_fake_script() -- Frame.LocalScript 
 	local script = Instance.new('LocalScript', Frame)
 
 	-- Variables
@@ -98,8 +98,8 @@ local function BIQZXQ_fake_script() -- Frame.LocalScript
 	end
 	
 end
-coroutine.wrap(BIQZXQ_fake_script)()
-local function OUOUD_fake_script() -- TextButton.LocalScript 
+coroutine.wrap(GSFPZVA_fake_script)()
+local function KPIU_fake_script() -- TextButton.LocalScript 
 	local script = Instance.new('LocalScript', TextButton)
 
 	-- Variables
@@ -120,8 +120,8 @@ local function OUOUD_fake_script() -- TextButton.LocalScript
 	end
 	
 end
-coroutine.wrap(OUOUD_fake_script)()
-local function KCEJS_fake_script() -- TextButton.LocalScript 
+coroutine.wrap(KPIU_fake_script)()
+local function DPXE_fake_script() -- TextButton.LocalScript 
 	local script = Instance.new('LocalScript', TextButton)
 
 	local flingActive = false -- Tracks if the fling is active
@@ -178,8 +178,8 @@ local function KCEJS_fake_script() -- TextButton.LocalScript
 	end)
 	
 end
-coroutine.wrap(KCEJS_fake_script)()
-local function UFWSXK_fake_script() -- TextButton_2.LocalScript 
+coroutine.wrap(DPXE_fake_script)()
+local function XIUCET_fake_script() -- TextButton_2.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_2)
 
 	-- Variables
@@ -200,49 +200,76 @@ local function UFWSXK_fake_script() -- TextButton_2.LocalScript
 	end
 	
 end
-coroutine.wrap(UFWSXK_fake_script)()
-local function FYFX_fake_script() -- TextButton_2.LocalScript 
+coroutine.wrap(XIUCET_fake_script)()
+local function FZYTRT_fake_script() -- TextButton_2.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_2)
 
 	local player = game.Players.LocalPlayer
-	local playerGui = player:WaitForChild("PlayerGui")
+	local button = script.Parent -- Assuming this LocalScript is a child of the button
+	local espEnabled = false -- Variable to track if ESP is enabled
 	
-	-- Function to create a highlight for a player
+	-- Function to create a highlight for a player's character
 	local function createHighlight(character)
 		if character and character:FindFirstChild("HumanoidRootPart") then
+			-- Remove existing highlight if it exists
+			local existingHighlight = character:FindFirstChildOfClass("Highlight")
+			if existingHighlight then
+				existingHighlight:Destroy()
+			end
+	
+			-- Create new highlight
 			local highlight = Instance.new("Highlight")
 			highlight.Parent = character
 			highlight.Adornee = character.HumanoidRootPart
-			highlight.FillColor = Color3.fromRGB(0, 0, 0) -- Set fill color to black using Color3.fromRGB
+			highlight.FillColor = Color3.fromRGB(0, 0, 0) -- Set fill color to black
 			highlight.FillTransparency = 1 -- Make the fill color transparent
 			highlight.OutlineTransparency = 0 -- Set the outline to fully visible
 			highlight.OutlineColor = Color3.fromRGB(255, 255, 255) -- Set the outline color to white
-	
-			return highlight -- Return the highlight instance
 		end
 	end
 	
 	-- Function to refresh highlights for all players
 	local function refreshHighlights()
-		for _, targetPlayer in ipairs(game.Players:GetPlayers()) do
-			if targetPlayer ~= player and targetPlayer.Character then
-				local existingHighlight = targetPlayer.Character:FindFirstChildOfClass("Highlight")
-				if not existingHighlight then
-					createHighlight(targetPlayer.Character) -- Create highlight if it doesn't exist
+		if espEnabled then
+			for _, targetPlayer in ipairs(game.Players:GetPlayers()) do
+				if targetPlayer ~= player and targetPlayer.Character then
+					createHighlight(targetPlayer.Character) -- Create or refresh highlight for each character
 				end
 			end
 		end
 	end
 	
-	-- Function to handle player added
+	-- Function to toggle ESP on button click
+	local function toggleESP()
+		espEnabled = not espEnabled -- Toggle ESP state
+		if espEnabled then
+			refreshHighlights() -- Refresh highlights immediately when enabled
+			button.BackgroundColor3 = Color3.fromRGB(0, 255, 0) -- Change button color to green (enabled)
+		else
+			-- Remove highlights from all players when disabling ESP
+			for _, targetPlayer in ipairs(game.Players:GetPlayers()) do
+				if targetPlayer ~= player and targetPlayer.Character then
+					local existingHighlight = targetPlayer.Character:FindFirstChildOfClass("Highlight")
+					if existingHighlight then
+						existingHighlight:Destroy() -- Remove highlight if ESP is disabled
+					end
+				end
+			end
+			button.BackgroundColor3 = Color3.fromRGB(255, 0, 0) -- Change button color to red (disabled)
+		end
+	end
+	
+	-- Function to handle new players joining
 	local function onPlayerAdded(newPlayer)
 		newPlayer.CharacterAdded:Connect(function(character)
-			wait(0.1) -- Wait for a moment to ensure character is loaded
-			createHighlight(character) -- Create highlight for the new player's character
+			wait(0.1) -- Wait for a moment to ensure the character is fully loaded
+			if espEnabled then
+				createHighlight(character) -- Create highlight for the new player's character
+			end
 		end)
 	end
 	
-	-- Function to handle player removing (deleting highlight)
+	-- Function to handle players leaving
 	local function onPlayerRemoving(removedPlayer)
 		if removedPlayer.Character then
 			local highlight = removedPlayer.Character:FindFirstChildOfClass("Highlight")
@@ -252,15 +279,13 @@ local function FYFX_fake_script() -- TextButton_2.LocalScript
 		end
 	end
 	
-	-- Monitor player deaths and respawns
+	-- Monitor player respawns
 	local function monitorPlayer(player)
 		player.CharacterAdded:Connect(function(character)
-			wait(0.1) -- Ensure character is fully loaded
-			local existingHighlight = character:FindFirstChildOfClass("Highlight")
-			if existingHighlight then
-				existingHighlight:Destroy() -- Remove existing highlight
+			wait(0.1) -- Wait to ensure the character is loaded
+			if espEnabled then
+				createHighlight(character) -- Create highlight for the respawned character
 			end
-			createHighlight(character) -- Create a new highlight for the respawned character
 		end)
 	end
 	
@@ -278,20 +303,18 @@ local function FYFX_fake_script() -- TextButton_2.LocalScript
 	game.Players.PlayerAdded:Connect(onPlayerAdded)
 	game.Players.PlayerRemoving:Connect(onPlayerRemoving)
 	
-	-- Monitor existing players
-	game.Players.PlayerAdded:Connect(function(newPlayer)
-		monitorPlayer(newPlayer)
-	end)
+	-- Connect the button click to toggle ESP
+	button.MouseButton1Click:Connect(toggleESP)
 	
-	-- Refresh highlights every few seconds
+	-- Refresh highlights periodically
 	while true do
 		refreshHighlights()
 		wait(2) -- Adjust refresh interval as needed
 	end
 	
 end
-coroutine.wrap(FYFX_fake_script)()
-local function GDBWPTE_fake_script() -- TextLabel.LocalScript 
+coroutine.wrap(FZYTRT_fake_script)()
+local function LEKJSNR_fake_script() -- TextLabel.LocalScript 
 	local script = Instance.new('LocalScript', TextLabel)
 
 	-- Variables
@@ -312,8 +335,8 @@ local function GDBWPTE_fake_script() -- TextLabel.LocalScript
 	end
 	
 end
-coroutine.wrap(GDBWPTE_fake_script)()
-local function CGRVPH_fake_script() -- TextButton_3.LocalScript 
+coroutine.wrap(LEKJSNR_fake_script)()
+local function BRFRTM_fake_script() -- TextButton_3.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_3)
 
 	-- Variables
@@ -334,16 +357,16 @@ local function CGRVPH_fake_script() -- TextButton_3.LocalScript
 	end
 	
 end
-coroutine.wrap(CGRVPH_fake_script)()
-local function ZSPQHI_fake_script() -- TextButton_3.LocalScript 
+coroutine.wrap(BRFRTM_fake_script)()
+local function PKZXI_fake_script() -- TextButton_3.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_3)
 
 	script.Parent.MouseButton1Click:Connect(function()
 		print("Attached")
 	end)
 end
-coroutine.wrap(ZSPQHI_fake_script)()
-local function GDLYG_fake_script() -- Frame.LocalScript 
+coroutine.wrap(PKZXI_fake_script)()
+local function BJYP_fake_script() -- Frame.LocalScript 
 	local script = Instance.new('LocalScript', Frame)
 
 	local frame = script.Parent
@@ -354,4 +377,4 @@ local function GDLYG_fake_script() -- Frame.LocalScript
 	
 	screengui.ResetOnSpawn = false
 end
-coroutine.wrap(GDLYG_fake_script)()
+coroutine.wrap(BJYP_fake_script)()
