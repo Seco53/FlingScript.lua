@@ -77,7 +77,7 @@ TextButton_3.TextWrapped = true
 
 -- Scripts:
 
-local function HJDS_fake_script() -- Frame.LocalScript 
+local function VOUDWTV_fake_script() -- Frame.LocalScript 
 	local script = Instance.new('LocalScript', Frame)
 
 	-- Variables
@@ -98,8 +98,8 @@ local function HJDS_fake_script() -- Frame.LocalScript
 	end
 	
 end
-coroutine.wrap(HJDS_fake_script)()
-local function ULRFGZZ_fake_script() -- TextButton.LocalScript 
+coroutine.wrap(VOUDWTV_fake_script)()
+local function AGUEWQA_fake_script() -- TextButton.LocalScript 
 	local script = Instance.new('LocalScript', TextButton)
 
 	-- Variables
@@ -120,8 +120,8 @@ local function ULRFGZZ_fake_script() -- TextButton.LocalScript
 	end
 	
 end
-coroutine.wrap(ULRFGZZ_fake_script)()
-local function DNRCJ_fake_script() -- TextButton.LocalScript 
+coroutine.wrap(AGUEWQA_fake_script)()
+local function EMEGVZG_fake_script() -- TextButton.LocalScript 
 	local script = Instance.new('LocalScript', TextButton)
 
 	local flingActive = false -- Tracks if the fling is active
@@ -158,11 +158,11 @@ local function DNRCJ_fake_script() -- TextButton.LocalScript
 							bambam.Force = Vector3.new(power, 0, power)
 							bambam.Location = player.Character.HumanoidRootPart.Position
 	
-							wait(0.1) -- Delay between each teleport
+							wait(1) -- Delay between each teleport
 							bambam:Destroy() -- Clean up force after each fling
 						end
 					end
-					wait(0.1) -- Delay between each round of teleportation
+					wait(1) -- Delay between each round of teleportation
 				end
 			end)()
 		else
@@ -178,8 +178,8 @@ local function DNRCJ_fake_script() -- TextButton.LocalScript
 	end)
 	
 end
-coroutine.wrap(DNRCJ_fake_script)()
-local function EWMOX_fake_script() -- TextButton_2.LocalScript 
+coroutine.wrap(EMEGVZG_fake_script)()
+local function SHXYME_fake_script() -- TextButton_2.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_2)
 
 	-- Variables
@@ -200,8 +200,8 @@ local function EWMOX_fake_script() -- TextButton_2.LocalScript
 	end
 	
 end
-coroutine.wrap(EWMOX_fake_script)()
-local function IWIAZNG_fake_script() -- TextButton_2.LocalScript 
+coroutine.wrap(SHXYME_fake_script)()
+local function CSHLXP_fake_script() -- TextButton_2.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_2)
 
 	local btn = script.Parent
@@ -267,8 +267,8 @@ local function IWIAZNG_fake_script() -- TextButton_2.LocalScript
 	end)
 	
 end
-coroutine.wrap(IWIAZNG_fake_script)()
-local function AGYBR_fake_script() -- TextLabel.LocalScript 
+coroutine.wrap(CSHLXP_fake_script)()
+local function FARTVIG_fake_script() -- TextLabel.LocalScript 
 	local script = Instance.new('LocalScript', TextLabel)
 
 	-- Variables
@@ -289,8 +289,8 @@ local function AGYBR_fake_script() -- TextLabel.LocalScript
 	end
 	
 end
-coroutine.wrap(AGYBR_fake_script)()
-local function SBXRLZU_fake_script() -- TextButton_3.LocalScript 
+coroutine.wrap(FARTVIG_fake_script)()
+local function DFFKJXT_fake_script() -- TextButton_3.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_3)
 
 	-- Variables
@@ -311,16 +311,16 @@ local function SBXRLZU_fake_script() -- TextButton_3.LocalScript
 	end
 	
 end
-coroutine.wrap(SBXRLZU_fake_script)()
-local function DQVUK_fake_script() -- TextButton_3.LocalScript 
+coroutine.wrap(DFFKJXT_fake_script)()
+local function RUKXDLG_fake_script() -- TextButton_3.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_3)
 
 	script.Parent.MouseButton1Click:Connect(function()
 		print("Attached")
 	end)
 end
-coroutine.wrap(DQVUK_fake_script)()
-local function RJGSXRQ_fake_script() -- Frame.LocalScript 
+coroutine.wrap(RUKXDLG_fake_script)()
+local function EFBS_fake_script() -- Frame.LocalScript 
 	local script = Instance.new('LocalScript', Frame)
 
 	local frame = script.Parent
@@ -331,4 +331,4 @@ local function RJGSXRQ_fake_script() -- Frame.LocalScript
 	
 	screengui.ResetOnSpawn = false
 end
-coroutine.wrap(RJGSXRQ_fake_script)()
+coroutine.wrap(EFBS_fake_script)()
