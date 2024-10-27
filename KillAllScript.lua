@@ -77,7 +77,7 @@ TextButton_3.TextWrapped = true
 
 -- Scripts:
 
-local function GSFPZVA_fake_script() -- Frame.LocalScript 
+local function SZHW_fake_script() -- Frame.LocalScript 
 	local script = Instance.new('LocalScript', Frame)
 
 	-- Variables
@@ -98,8 +98,8 @@ local function GSFPZVA_fake_script() -- Frame.LocalScript
 	end
 	
 end
-coroutine.wrap(GSFPZVA_fake_script)()
-local function KPIU_fake_script() -- TextButton.LocalScript 
+coroutine.wrap(SZHW_fake_script)()
+local function EMTS_fake_script() -- TextButton.LocalScript 
 	local script = Instance.new('LocalScript', TextButton)
 
 	-- Variables
@@ -120,8 +120,8 @@ local function KPIU_fake_script() -- TextButton.LocalScript
 	end
 	
 end
-coroutine.wrap(KPIU_fake_script)()
-local function DPXE_fake_script() -- TextButton.LocalScript 
+coroutine.wrap(EMTS_fake_script)()
+local function TCHYRF_fake_script() -- TextButton.LocalScript 
 	local script = Instance.new('LocalScript', TextButton)
 
 	local flingActive = false -- Tracks if the fling is active
@@ -158,11 +158,11 @@ local function DPXE_fake_script() -- TextButton.LocalScript
 							bambam.Force = Vector3.new(power, 0, power)
 							bambam.Location = player.Character.HumanoidRootPart.Position
 	
-							wait(1) -- Delay between each teleport
+							wait(2) -- Delay between each teleport
 							bambam:Destroy() -- Clean up force after each fling
 						end
 					end
-					wait(1) -- Delay between each round of teleportation
+					wait(2) -- Delay between each round of teleportation
 				end
 			end)()
 		else
@@ -178,8 +178,8 @@ local function DPXE_fake_script() -- TextButton.LocalScript
 	end)
 	
 end
-coroutine.wrap(DPXE_fake_script)()
-local function XIUCET_fake_script() -- TextButton_2.LocalScript 
+coroutine.wrap(TCHYRF_fake_script)()
+local function AGOS_fake_script() -- TextButton_2.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_2)
 
 	-- Variables
@@ -200,121 +200,75 @@ local function XIUCET_fake_script() -- TextButton_2.LocalScript
 	end
 	
 end
-coroutine.wrap(XIUCET_fake_script)()
-local function FZYTRT_fake_script() -- TextButton_2.LocalScript 
+coroutine.wrap(AGOS_fake_script)()
+local function CQBRXJJ_fake_script() -- TextButton_2.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_2)
 
-	local player = game.Players.LocalPlayer
-	local button = script.Parent -- Assuming this LocalScript is a child of the button
-	local espEnabled = false -- Variable to track if ESP is enabled
+	local btn = script.Parent
+	local players = game.Players:GetPlayers() -- Get list of all players
+	local highlightsActive = false -- Track whether highlights are currently active
+	local highlightCoroutines = {} -- Table to store running coroutines for each player
 	
-	-- Function to create a highlight for a player's character
-	local function createHighlight(character)
-		if character and character:FindFirstChild("HumanoidRootPart") then
-			-- Remove existing highlight if it exists
-			local existingHighlight = character:FindFirstChildOfClass("Highlight")
-			if existingHighlight then
-				existingHighlight:Destroy()
-			end
+	-- Function to create highlights with black fill and start the rainbow outline coroutine
+	local function createHighlight()
+		for _, player in pairs(players) do
+			if player.Character then
+				-- Check if the player already has a highlight
+				local existingHighlight = player.Character:FindFirstChild("Highlight")
+				if not existingHighlight then
+					-- Create the highlight
+					local highlight = Instance.new("Highlight")
+					highlight.Parent = player.Character
+					highlight.Adornee = player.Character
+					highlight.FillTransparency = 0 -- Set fill transparency to 0 for black fill
+					highlight.FillColor = Color3.fromRGB(0,0,0)
+					highlight.OutlineTransparency = 0
+					highlight.OutlineColor = Color3.fromRGB(255, 0, 0) -- Start with red outline
 	
-			-- Create new highlight
-			local highlight = Instance.new("Highlight")
-			highlight.Parent = character
-			highlight.Adornee = character.HumanoidRootPart
-			highlight.FillColor = Color3.fromRGB(0, 0, 0) -- Set fill color to black
-			highlight.FillTransparency = 1 -- Make the fill color transparent
-			highlight.OutlineTransparency = 0 -- Set the outline to fully visible
-			highlight.OutlineColor = Color3.fromRGB(255, 255, 255) -- Set the outline color to white
-		end
-	end
-	
-	-- Function to refresh highlights for all players
-	local function refreshHighlights()
-		if espEnabled then
-			for _, targetPlayer in ipairs(game.Players:GetPlayers()) do
-				if targetPlayer ~= player and targetPlayer.Character then
-					createHighlight(targetPlayer.Character) -- Create or refresh highlight for each character
-				end
-			end
-		end
-	end
-	
-	-- Function to toggle ESP on button click
-	local function toggleESP()
-		espEnabled = not espEnabled -- Toggle ESP state
-		if espEnabled then
-			refreshHighlights() -- Refresh highlights immediately when enabled
-			button.BackgroundColor3 = Color3.fromRGB(0, 255, 0) -- Change button color to green (enabled)
-		else
-			-- Remove highlights from all players when disabling ESP
-			for _, targetPlayer in ipairs(game.Players:GetPlayers()) do
-				if targetPlayer ~= player and targetPlayer.Character then
-					local existingHighlight = targetPlayer.Character:FindFirstChildOfClass("Highlight")
-					if existingHighlight then
-						existingHighlight:Destroy() -- Remove highlight if ESP is disabled
+					-- Coroutine for changing the outline color to create a rainbow effect
+					local function rainbowOutline()
+						local timeElapsed = 0
+						while highlightsActive and highlight.Parent do
+							local hue = (timeElapsed / 5) % 1 -- Cycle hue every 5 seconds
+							highlight.OutlineColor = Color3.fromHSV(hue, 1, 1) -- Set outline color using HSV
+							timeElapsed = timeElapsed + wait(0.1) -- Update every 0.1 seconds
+						end
 					end
+	
+					-- Start the rainbow coroutine
+					highlightCoroutines[player.UserId] = coroutine.create(rainbowOutline)
+					coroutine.resume(highlightCoroutines[player.UserId])
 				end
 			end
-			button.BackgroundColor3 = Color3.fromRGB(255, 0, 0) -- Change button color to red (disabled)
 		end
 	end
 	
-	-- Function to handle new players joining
-	local function onPlayerAdded(newPlayer)
-		newPlayer.CharacterAdded:Connect(function(character)
-			wait(0.1) -- Wait for a moment to ensure the character is fully loaded
-			if espEnabled then
-				createHighlight(character) -- Create highlight for the new player's character
-			end
-		end)
-	end
-	
-	-- Function to handle players leaving
-	local function onPlayerRemoving(removedPlayer)
-		if removedPlayer.Character then
-			local highlight = removedPlayer.Character:FindFirstChildOfClass("Highlight")
-			if highlight then
-				highlight:Destroy() -- Remove the highlight if the player leaves
+	-- Function to remove highlights and stop the rainbow coroutine
+	local function removeHighlights()
+		for _, player in pairs(players) do
+			if player.Character then
+				-- Check for existing highlights and remove them
+				local existingHighlight = player.Character:FindFirstChild("Highlight")
+				if existingHighlight then
+					existingHighlight:Destroy() -- Remove the highlight
+					highlightCoroutines[player.UserId] = nil -- Remove the coroutine reference
+				end
 			end
 		end
 	end
 	
-	-- Monitor player respawns
-	local function monitorPlayer(player)
-		player.CharacterAdded:Connect(function(character)
-			wait(0.1) -- Wait to ensure the character is loaded
-			if espEnabled then
-				createHighlight(character) -- Create highlight for the respawned character
-			end
-		end)
-	end
-	
-	-- Initial setup: add highlights for existing players
-	for _, targetPlayer in ipairs(game.Players:GetPlayers()) do
-		if targetPlayer ~= player then
-			monitorPlayer(targetPlayer) -- Monitor each existing player
-			if targetPlayer.Character then
-				createHighlight(targetPlayer.Character) -- Create highlight if character exists
-			end
+	btn.MouseButton1Click:Connect(function()
+		highlightsActive = not highlightsActive -- Toggle the state
+		if highlightsActive then
+			createHighlight() -- Create highlights if they are active
+		else
+			removeHighlights() -- Remove highlights if they are inactive
 		end
-	end
-	
-	-- Connect events for new players
-	game.Players.PlayerAdded:Connect(onPlayerAdded)
-	game.Players.PlayerRemoving:Connect(onPlayerRemoving)
-	
-	-- Connect the button click to toggle ESP
-	button.MouseButton1Click:Connect(toggleESP)
-	
-	-- Refresh highlights periodically
-	while true do
-		refreshHighlights()
-		wait(2) -- Adjust refresh interval as needed
-	end
+	end)
 	
 end
-coroutine.wrap(FZYTRT_fake_script)()
-local function LEKJSNR_fake_script() -- TextLabel.LocalScript 
+coroutine.wrap(CQBRXJJ_fake_script)()
+local function KOIQ_fake_script() -- TextLabel.LocalScript 
 	local script = Instance.new('LocalScript', TextLabel)
 
 	-- Variables
@@ -335,8 +289,8 @@ local function LEKJSNR_fake_script() -- TextLabel.LocalScript
 	end
 	
 end
-coroutine.wrap(LEKJSNR_fake_script)()
-local function BRFRTM_fake_script() -- TextButton_3.LocalScript 
+coroutine.wrap(KOIQ_fake_script)()
+local function UQVJ_fake_script() -- TextButton_3.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_3)
 
 	-- Variables
@@ -357,16 +311,16 @@ local function BRFRTM_fake_script() -- TextButton_3.LocalScript
 	end
 	
 end
-coroutine.wrap(BRFRTM_fake_script)()
-local function PKZXI_fake_script() -- TextButton_3.LocalScript 
+coroutine.wrap(UQVJ_fake_script)()
+local function WUEWUC_fake_script() -- TextButton_3.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_3)
 
 	script.Parent.MouseButton1Click:Connect(function()
 		print("Attached")
 	end)
 end
-coroutine.wrap(PKZXI_fake_script)()
-local function BJYP_fake_script() -- Frame.LocalScript 
+coroutine.wrap(WUEWUC_fake_script)()
+local function VJZWIAB_fake_script() -- Frame.LocalScript 
 	local script = Instance.new('LocalScript', Frame)
 
 	local frame = script.Parent
@@ -377,4 +331,4 @@ local function BJYP_fake_script() -- Frame.LocalScript
 	
 	screengui.ResetOnSpawn = false
 end
-coroutine.wrap(BJYP_fake_script)()
+coroutine.wrap(VJZWIAB_fake_script)()
