@@ -9,6 +9,7 @@ local TextButton = Instance.new("TextButton")
 local TextButton_2 = Instance.new("TextButton")
 local TextLabel = Instance.new("TextLabel")
 local TextButton_3 = Instance.new("TextButton")
+local TextButton_4 = Instance.new("TextButton")
 
 --Properties:
 
@@ -66,7 +67,7 @@ TextButton_3.Parent = Frame
 TextButton_3.BackgroundColor3 = Color3.fromRGB(47, 47, 47)
 TextButton_3.BorderColor3 = Color3.fromRGB(0, 0, 0)
 TextButton_3.BorderSizePixel = 2
-TextButton_3.Position = UDim2.new(0.298630148, 0, 0.261467904, 0)
+TextButton_3.Position = UDim2.new(0.0958904102, 0, 0.284403682, 0)
 TextButton_3.Size = UDim2.new(0, 146, 0, 50)
 TextButton_3.Font = Enum.Font.SourceSansBold
 TextButton_3.Text = "Attach"
@@ -75,9 +76,22 @@ TextButton_3.TextScaled = true
 TextButton_3.TextSize = 14.000
 TextButton_3.TextWrapped = true
 
+TextButton_4.Parent = Frame
+TextButton_4.BackgroundColor3 = Color3.fromRGB(47, 47, 47)
+TextButton_4.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextButton_4.BorderSizePixel = 2
+TextButton_4.Position = UDim2.new(0.523287773, 0, 0.284403682, 0)
+TextButton_4.Size = UDim2.new(0, 146, 0, 50)
+TextButton_4.Font = Enum.Font.SourceSansBold
+TextButton_4.Text = "Refresh Script"
+TextButton_4.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton_4.TextScaled = true
+TextButton_4.TextSize = 14.000
+TextButton_4.TextWrapped = true
+
 -- Scripts:
 
-local function VOUDWTV_fake_script() -- Frame.LocalScript 
+local function KREL_fake_script() -- Frame.LocalScript 
 	local script = Instance.new('LocalScript', Frame)
 
 	-- Variables
@@ -98,8 +112,8 @@ local function VOUDWTV_fake_script() -- Frame.LocalScript
 	end
 	
 end
-coroutine.wrap(VOUDWTV_fake_script)()
-local function AGUEWQA_fake_script() -- TextButton.LocalScript 
+coroutine.wrap(KREL_fake_script)()
+local function NMNKJSV_fake_script() -- TextButton.LocalScript 
 	local script = Instance.new('LocalScript', TextButton)
 
 	-- Variables
@@ -120,12 +134,12 @@ local function AGUEWQA_fake_script() -- TextButton.LocalScript
 	end
 	
 end
-coroutine.wrap(AGUEWQA_fake_script)()
-local function EMEGVZG_fake_script() -- TextButton.LocalScript 
+coroutine.wrap(NMNKJSV_fake_script)()
+local function KLUYKLX_fake_script() -- TextButton.LocalScript 
 	local script = Instance.new('LocalScript', TextButton)
 
 	local flingActive = false -- Tracks if the fling is active
-	local power = 250 -- Adjust this to change the power level
+	local power = 500 -- Adjust this to change the power level
 	local player = game.Players.LocalPlayer
 	local runService = game:GetService("RunService")
 	
@@ -178,8 +192,8 @@ local function EMEGVZG_fake_script() -- TextButton.LocalScript
 	end)
 	
 end
-coroutine.wrap(EMEGVZG_fake_script)()
-local function SHXYME_fake_script() -- TextButton_2.LocalScript 
+coroutine.wrap(KLUYKLX_fake_script)()
+local function CEQGOUM_fake_script() -- TextButton_2.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_2)
 
 	-- Variables
@@ -200,8 +214,8 @@ local function SHXYME_fake_script() -- TextButton_2.LocalScript
 	end
 	
 end
-coroutine.wrap(SHXYME_fake_script)()
-local function CSHLXP_fake_script() -- TextButton_2.LocalScript 
+coroutine.wrap(CEQGOUM_fake_script)()
+local function YXIO_fake_script() -- TextButton_2.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_2)
 
 	local btn = script.Parent
@@ -267,8 +281,8 @@ local function CSHLXP_fake_script() -- TextButton_2.LocalScript
 	end)
 	
 end
-coroutine.wrap(CSHLXP_fake_script)()
-local function FARTVIG_fake_script() -- TextLabel.LocalScript 
+coroutine.wrap(YXIO_fake_script)()
+local function IQTBQG_fake_script() -- TextLabel.LocalScript 
 	local script = Instance.new('LocalScript', TextLabel)
 
 	-- Variables
@@ -289,8 +303,8 @@ local function FARTVIG_fake_script() -- TextLabel.LocalScript
 	end
 	
 end
-coroutine.wrap(FARTVIG_fake_script)()
-local function DFFKJXT_fake_script() -- TextButton_3.LocalScript 
+coroutine.wrap(IQTBQG_fake_script)()
+local function OOEV_fake_script() -- TextButton_3.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_3)
 
 	-- Variables
@@ -311,16 +325,16 @@ local function DFFKJXT_fake_script() -- TextButton_3.LocalScript
 	end
 	
 end
-coroutine.wrap(DFFKJXT_fake_script)()
-local function RUKXDLG_fake_script() -- TextButton_3.LocalScript 
+coroutine.wrap(OOEV_fake_script)()
+local function MNGQEDS_fake_script() -- TextButton_3.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_3)
 
 	script.Parent.MouseButton1Click:Connect(function()
 		print("Attached")
 	end)
 end
-coroutine.wrap(RUKXDLG_fake_script)()
-local function EFBS_fake_script() -- Frame.LocalScript 
+coroutine.wrap(MNGQEDS_fake_script)()
+local function DZCBV_fake_script() -- Frame.LocalScript 
 	local script = Instance.new('LocalScript', Frame)
 
 	local frame = script.Parent
@@ -331,4 +345,38 @@ local function EFBS_fake_script() -- Frame.LocalScript
 	
 	screengui.ResetOnSpawn = false
 end
-coroutine.wrap(EFBS_fake_script)()
+coroutine.wrap(DZCBV_fake_script)()
+local function KSJJURL_fake_script() -- TextButton_4.LocalScript 
+	local script = Instance.new('LocalScript', TextButton_4)
+
+	-- Variables
+	local frame = script.Parent
+	local speed = 0.025 -- Speed of the rainbow effect (lower value = faster transition)
+	
+	-- Function to generate rainbow colors
+	local function rainbowColor(hue)
+		return Color3.fromHSV(hue, 1, 1) -- Full saturation and brightness
+	end
+	
+	-- Rainbow loop
+	while true do
+		for hue = 0, 1, speed do
+			frame.BorderColor3 = rainbowColor(hue)
+			wait(0.05) -- Small delay for smooth transition
+		end
+	end
+	
+end
+coroutine.wrap(KSJJURL_fake_script)()
+local function TIOH_fake_script() -- TextButton_4.LocalScript 
+	local script = Instance.new('LocalScript', TextButton_4)
+
+	script.Parent.MouseButton1Click:Connect(function()
+		local frame = script.Parent.Parent
+		local copiedframe = frame:Clone()
+		wait(0.1)
+		print("Refreshed Script!")
+		frame:Destroy()
+	end)
+end
+coroutine.wrap(TIOH_fake_script)()
