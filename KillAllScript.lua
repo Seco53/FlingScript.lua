@@ -77,7 +77,7 @@ TextButton_3.TextWrapped = true
 
 -- Scripts:
 
-local function YUSLXDF_fake_script() -- Frame.LocalScript 
+local function LFZRPUG_fake_script() -- Frame.LocalScript 
 	local script = Instance.new('LocalScript', Frame)
 
 	-- Variables
@@ -98,8 +98,8 @@ local function YUSLXDF_fake_script() -- Frame.LocalScript
 	end
 	
 end
-coroutine.wrap(YUSLXDF_fake_script)()
-local function ONEZQ_fake_script() -- TextButton.LocalScript 
+coroutine.wrap(LFZRPUG_fake_script)()
+local function TWUFSQB_fake_script() -- TextButton.LocalScript 
 	local script = Instance.new('LocalScript', TextButton)
 
 	-- Variables
@@ -120,16 +120,16 @@ local function ONEZQ_fake_script() -- TextButton.LocalScript
 	end
 	
 end
-coroutine.wrap(ONEZQ_fake_script)()
-local function UFTOD_fake_script() -- TextButton.LocalScript 
+coroutine.wrap(TWUFSQB_fake_script)()
+local function ECMT_fake_script() -- TextButton.LocalScript 
 	local script = Instance.new('LocalScript', TextButton)
 
 	script.Parent.MouseButton1Click:Connect(function()
-		loadstring(game:HttpGet("https://pastebin.com/raw/zqyDSUWX"))()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Seco53/FlingScript.lua/refs/heads/main/FlingingScript.lua"))()
 	end)
 end
-coroutine.wrap(UFTOD_fake_script)()
-local function ADFDEHR_fake_script() -- TextButton_2.LocalScript 
+coroutine.wrap(ECMT_fake_script)()
+local function KPOH_fake_script() -- TextButton_2.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_2)
 
 	-- Variables
@@ -150,8 +150,8 @@ local function ADFDEHR_fake_script() -- TextButton_2.LocalScript
 	end
 	
 end
-coroutine.wrap(ADFDEHR_fake_script)()
-local function GJQNYFU_fake_script() -- TextButton_2.LocalScript 
+coroutine.wrap(KPOH_fake_script)()
+local function NHCB_fake_script() -- TextButton_2.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_2)
 
 	local btn = script.Parent
@@ -217,8 +217,8 @@ local function GJQNYFU_fake_script() -- TextButton_2.LocalScript
 	end)
 	
 end
-coroutine.wrap(GJQNYFU_fake_script)()
-local function IAZYA_fake_script() -- TextLabel.LocalScript 
+coroutine.wrap(NHCB_fake_script)()
+local function JABUO_fake_script() -- TextLabel.LocalScript 
 	local script = Instance.new('LocalScript', TextLabel)
 
 	-- Variables
@@ -239,8 +239,8 @@ local function IAZYA_fake_script() -- TextLabel.LocalScript
 	end
 	
 end
-coroutine.wrap(IAZYA_fake_script)()
-local function MFTU_fake_script() -- TextButton_3.LocalScript 
+coroutine.wrap(JABUO_fake_script)()
+local function GPIQ_fake_script() -- TextButton_3.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_3)
 
 	-- Variables
@@ -261,16 +261,16 @@ local function MFTU_fake_script() -- TextButton_3.LocalScript
 	end
 	
 end
-coroutine.wrap(MFTU_fake_script)()
-local function OBLT_fake_script() -- TextButton_3.LocalScript 
+coroutine.wrap(GPIQ_fake_script)()
+local function HBCU_fake_script() -- TextButton_3.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_3)
 
 	script.Parent.MouseButton1Click:Connect(function()
 		print("Attached")
 	end)
 end
-coroutine.wrap(OBLT_fake_script)()
-local function CEIAZZ_fake_script() -- Frame.LocalScript 
+coroutine.wrap(HBCU_fake_script)()
+local function ZIYCU_fake_script() -- Frame.LocalScript 
 	local script = Instance.new('LocalScript', Frame)
 
 	local frame = script.Parent
@@ -281,4 +281,4 @@ local function CEIAZZ_fake_script() -- Frame.LocalScript
 	
 	screengui.ResetOnSpawn = false
 end
-coroutine.wrap(CEIAZZ_fake_script)()
+coroutine.wrap(ZIYCU_fake_script)()
