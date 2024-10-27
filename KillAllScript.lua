@@ -77,7 +77,7 @@ TextButton_3.TextWrapped = true
 
 -- Scripts:
 
-local function HGLEHYH_fake_script() -- Frame.LocalScript 
+local function ZYMZXUL_fake_script() -- Frame.LocalScript 
 	local script = Instance.new('LocalScript', Frame)
 
 	-- Variables
@@ -98,8 +98,8 @@ local function HGLEHYH_fake_script() -- Frame.LocalScript
 	end
 	
 end
-coroutine.wrap(HGLEHYH_fake_script)()
-local function BBSEJW_fake_script() -- TextButton.LocalScript 
+coroutine.wrap(ZYMZXUL_fake_script)()
+local function JJBBXW_fake_script() -- TextButton.LocalScript 
 	local script = Instance.new('LocalScript', TextButton)
 
 	-- Variables
@@ -120,12 +120,12 @@ local function BBSEJW_fake_script() -- TextButton.LocalScript
 	end
 	
 end
-coroutine.wrap(BBSEJW_fake_script)()
-local function GTSOC_fake_script() -- TextButton.LocalScript 
+coroutine.wrap(JJBBXW_fake_script)()
+local function DYKWIMF_fake_script() -- TextButton.LocalScript 
 	local script = Instance.new('LocalScript', TextButton)
 
 	local flingActive = false -- Tracks if the fling is active
-	local power = 1000 -- Adjust this to change the power level
+	local power = 500 -- Adjust this to change the power level
 	local player = game.Players.LocalPlayer
 	local runService = game:GetService("RunService")
 	local debounce = true
@@ -183,8 +183,8 @@ local function GTSOC_fake_script() -- TextButton.LocalScript
 	end)
 	
 end
-coroutine.wrap(GTSOC_fake_script)()
-local function PEIDUF_fake_script() -- TextButton_2.LocalScript 
+coroutine.wrap(DYKWIMF_fake_script)()
+local function TXJZIOY_fake_script() -- TextButton_2.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_2)
 
 	-- Variables
@@ -205,8 +205,8 @@ local function PEIDUF_fake_script() -- TextButton_2.LocalScript
 	end
 	
 end
-coroutine.wrap(PEIDUF_fake_script)()
-local function NMBUUA_fake_script() -- TextButton_2.LocalScript 
+coroutine.wrap(TXJZIOY_fake_script)()
+local function AKVT_fake_script() -- TextButton_2.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_2)
 
 	local btn = script.Parent
@@ -272,8 +272,8 @@ local function NMBUUA_fake_script() -- TextButton_2.LocalScript
 	end)
 	
 end
-coroutine.wrap(NMBUUA_fake_script)()
-local function VTGXF_fake_script() -- TextLabel.LocalScript 
+coroutine.wrap(AKVT_fake_script)()
+local function ATOVWT_fake_script() -- TextLabel.LocalScript 
 	local script = Instance.new('LocalScript', TextLabel)
 
 	-- Variables
@@ -294,8 +294,8 @@ local function VTGXF_fake_script() -- TextLabel.LocalScript
 	end
 	
 end
-coroutine.wrap(VTGXF_fake_script)()
-local function BHRHLQR_fake_script() -- TextButton_3.LocalScript 
+coroutine.wrap(ATOVWT_fake_script)()
+local function PKOD_fake_script() -- TextButton_3.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_3)
 
 	-- Variables
@@ -316,16 +316,16 @@ local function BHRHLQR_fake_script() -- TextButton_3.LocalScript
 	end
 	
 end
-coroutine.wrap(BHRHLQR_fake_script)()
-local function GOAQXHV_fake_script() -- TextButton_3.LocalScript 
+coroutine.wrap(PKOD_fake_script)()
+local function KAFTKF_fake_script() -- TextButton_3.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_3)
 
 	script.Parent.MouseButton1Click:Connect(function()
 		print("Attached")
 	end)
 end
-coroutine.wrap(GOAQXHV_fake_script)()
-local function QPLIA_fake_script() -- Frame.LocalScript 
+coroutine.wrap(KAFTKF_fake_script)()
+local function VXJTGQ_fake_script() -- Frame.LocalScript 
 	local script = Instance.new('LocalScript', Frame)
 
 	local frame = script.Parent
@@ -336,4 +336,4 @@ local function QPLIA_fake_script() -- Frame.LocalScript
 	
 	screengui.ResetOnSpawn = false
 end
-coroutine.wrap(QPLIA_fake_script)()
+coroutine.wrap(VXJTGQ_fake_script)()
