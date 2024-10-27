@@ -77,7 +77,7 @@ TextButton_3.TextWrapped = true
 
 -- Scripts:
 
-local function SZHW_fake_script() -- Frame.LocalScript 
+local function HGLEHYH_fake_script() -- Frame.LocalScript 
 	local script = Instance.new('LocalScript', Frame)
 
 	-- Variables
@@ -98,8 +98,8 @@ local function SZHW_fake_script() -- Frame.LocalScript
 	end
 	
 end
-coroutine.wrap(SZHW_fake_script)()
-local function EMTS_fake_script() -- TextButton.LocalScript 
+coroutine.wrap(HGLEHYH_fake_script)()
+local function BBSEJW_fake_script() -- TextButton.LocalScript 
 	local script = Instance.new('LocalScript', TextButton)
 
 	-- Variables
@@ -120,14 +120,15 @@ local function EMTS_fake_script() -- TextButton.LocalScript
 	end
 	
 end
-coroutine.wrap(EMTS_fake_script)()
-local function TCHYRF_fake_script() -- TextButton.LocalScript 
+coroutine.wrap(BBSEJW_fake_script)()
+local function GTSOC_fake_script() -- TextButton.LocalScript 
 	local script = Instance.new('LocalScript', TextButton)
 
 	local flingActive = false -- Tracks if the fling is active
-	local power = 500 -- Adjust this to change the power level
+	local power = 1000 -- Adjust this to change the power level
 	local player = game.Players.LocalPlayer
 	local runService = game:GetService("RunService")
+	local debounce = true
 	
 	script.Parent.MouseButton1Click:Connect(function()
 		flingActive = not flingActive -- Toggle fling mode on/off
@@ -150,16 +151,20 @@ local function TCHYRF_fake_script() -- TextButton.LocalScript
 					for _, target in ipairs(game.Players:GetPlayers()) do
 						if target ~= player and target.Character and target.Character:FindFirstChild("HumanoidRootPart") then
 							-- Teleport to each player
-							player.Character.HumanoidRootPart.CFrame = target.Character.HumanoidRootPart.CFrame
-	
-							-- Apply fling force
+								-- Apply fling force
 							local bambam = Instance.new("BodyThrust")
 							bambam.Parent = player.Character.HumanoidRootPart
 							bambam.Force = Vector3.new(power, 0, power)
 							bambam.Location = player.Character.HumanoidRootPart.Position
+							
+							while debounce == true do
+								task.wait(0.01)
+							player.Character.HumanoidRootPart.CFrame = target.Character.HumanoidRootPart.CFrame
+							if target.Character:FindFirstChild("HumanoidRootPart") == nil then
+								debounce = false
+								end
+							end
 	
-							wait(2) -- Delay between each teleport
-							bambam:Destroy() -- Clean up force after each fling
 						end
 					end
 					wait(2) -- Delay between each round of teleportation
@@ -178,8 +183,8 @@ local function TCHYRF_fake_script() -- TextButton.LocalScript
 	end)
 	
 end
-coroutine.wrap(TCHYRF_fake_script)()
-local function AGOS_fake_script() -- TextButton_2.LocalScript 
+coroutine.wrap(GTSOC_fake_script)()
+local function PEIDUF_fake_script() -- TextButton_2.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_2)
 
 	-- Variables
@@ -200,8 +205,8 @@ local function AGOS_fake_script() -- TextButton_2.LocalScript
 	end
 	
 end
-coroutine.wrap(AGOS_fake_script)()
-local function CQBRXJJ_fake_script() -- TextButton_2.LocalScript 
+coroutine.wrap(PEIDUF_fake_script)()
+local function NMBUUA_fake_script() -- TextButton_2.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_2)
 
 	local btn = script.Parent
@@ -267,8 +272,8 @@ local function CQBRXJJ_fake_script() -- TextButton_2.LocalScript
 	end)
 	
 end
-coroutine.wrap(CQBRXJJ_fake_script)()
-local function KOIQ_fake_script() -- TextLabel.LocalScript 
+coroutine.wrap(NMBUUA_fake_script)()
+local function VTGXF_fake_script() -- TextLabel.LocalScript 
 	local script = Instance.new('LocalScript', TextLabel)
 
 	-- Variables
@@ -289,8 +294,8 @@ local function KOIQ_fake_script() -- TextLabel.LocalScript
 	end
 	
 end
-coroutine.wrap(KOIQ_fake_script)()
-local function UQVJ_fake_script() -- TextButton_3.LocalScript 
+coroutine.wrap(VTGXF_fake_script)()
+local function BHRHLQR_fake_script() -- TextButton_3.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_3)
 
 	-- Variables
@@ -311,16 +316,16 @@ local function UQVJ_fake_script() -- TextButton_3.LocalScript
 	end
 	
 end
-coroutine.wrap(UQVJ_fake_script)()
-local function WUEWUC_fake_script() -- TextButton_3.LocalScript 
+coroutine.wrap(BHRHLQR_fake_script)()
+local function GOAQXHV_fake_script() -- TextButton_3.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_3)
 
 	script.Parent.MouseButton1Click:Connect(function()
 		print("Attached")
 	end)
 end
-coroutine.wrap(WUEWUC_fake_script)()
-local function VJZWIAB_fake_script() -- Frame.LocalScript 
+coroutine.wrap(GOAQXHV_fake_script)()
+local function QPLIA_fake_script() -- Frame.LocalScript 
 	local script = Instance.new('LocalScript', Frame)
 
 	local frame = script.Parent
@@ -331,4 +336,4 @@ local function VJZWIAB_fake_script() -- Frame.LocalScript
 	
 	screengui.ResetOnSpawn = false
 end
-coroutine.wrap(VJZWIAB_fake_script)()
+coroutine.wrap(QPLIA_fake_script)()
