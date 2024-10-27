@@ -9,7 +9,6 @@ local TextButton = Instance.new("TextButton")
 local TextButton_2 = Instance.new("TextButton")
 local TextLabel = Instance.new("TextLabel")
 local TextButton_3 = Instance.new("TextButton")
-local TextButton_4 = Instance.new("TextButton")
 
 --Properties:
 
@@ -67,7 +66,7 @@ TextButton_3.Parent = Frame
 TextButton_3.BackgroundColor3 = Color3.fromRGB(47, 47, 47)
 TextButton_3.BorderColor3 = Color3.fromRGB(0, 0, 0)
 TextButton_3.BorderSizePixel = 2
-TextButton_3.Position = UDim2.new(0.0958904102, 0, 0.284403682, 0)
+TextButton_3.Position = UDim2.new(0.298630148, 0, 0.261467904, 0)
 TextButton_3.Size = UDim2.new(0, 146, 0, 50)
 TextButton_3.Font = Enum.Font.SourceSansBold
 TextButton_3.Text = "Attach"
@@ -76,22 +75,9 @@ TextButton_3.TextScaled = true
 TextButton_3.TextSize = 14.000
 TextButton_3.TextWrapped = true
 
-TextButton_4.Parent = Frame
-TextButton_4.BackgroundColor3 = Color3.fromRGB(47, 47, 47)
-TextButton_4.BorderColor3 = Color3.fromRGB(0, 0, 0)
-TextButton_4.BorderSizePixel = 2
-TextButton_4.Position = UDim2.new(0.523287773, 0, 0.284403682, 0)
-TextButton_4.Size = UDim2.new(0, 146, 0, 50)
-TextButton_4.Font = Enum.Font.SourceSansBold
-TextButton_4.Text = "Refresh Script"
-TextButton_4.TextColor3 = Color3.fromRGB(255, 255, 255)
-TextButton_4.TextScaled = true
-TextButton_4.TextSize = 14.000
-TextButton_4.TextWrapped = true
-
 -- Scripts:
 
-local function AFEE_fake_script() -- Frame.LocalScript 
+local function BIQZXQ_fake_script() -- Frame.LocalScript 
 	local script = Instance.new('LocalScript', Frame)
 
 	-- Variables
@@ -112,8 +98,8 @@ local function AFEE_fake_script() -- Frame.LocalScript
 	end
 	
 end
-coroutine.wrap(AFEE_fake_script)()
-local function IDRNIR_fake_script() -- TextButton.LocalScript 
+coroutine.wrap(BIQZXQ_fake_script)()
+local function OUOUD_fake_script() -- TextButton.LocalScript 
 	local script = Instance.new('LocalScript', TextButton)
 
 	-- Variables
@@ -134,8 +120,8 @@ local function IDRNIR_fake_script() -- TextButton.LocalScript
 	end
 	
 end
-coroutine.wrap(IDRNIR_fake_script)()
-local function KZBYH_fake_script() -- TextButton.LocalScript 
+coroutine.wrap(OUOUD_fake_script)()
+local function KCEJS_fake_script() -- TextButton.LocalScript 
 	local script = Instance.new('LocalScript', TextButton)
 
 	local flingActive = false -- Tracks if the fling is active
@@ -192,8 +178,8 @@ local function KZBYH_fake_script() -- TextButton.LocalScript
 	end)
 	
 end
-coroutine.wrap(KZBYH_fake_script)()
-local function GNHYXV_fake_script() -- TextButton_2.LocalScript 
+coroutine.wrap(KCEJS_fake_script)()
+local function UFWSXK_fake_script() -- TextButton_2.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_2)
 
 	-- Variables
@@ -214,75 +200,98 @@ local function GNHYXV_fake_script() -- TextButton_2.LocalScript
 	end
 	
 end
-coroutine.wrap(GNHYXV_fake_script)()
-local function TQLVHBS_fake_script() -- TextButton_2.LocalScript 
+coroutine.wrap(UFWSXK_fake_script)()
+local function FYFX_fake_script() -- TextButton_2.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_2)
 
-	local btn = script.Parent
-	local players = game.Players:GetPlayers() -- Get list of all players
-	local highlightsActive = false -- Track whether highlights are currently active
-	local highlightCoroutines = {} -- Table to store running coroutines for each player
+	local player = game.Players.LocalPlayer
+	local playerGui = player:WaitForChild("PlayerGui")
 	
-	-- Function to create highlights with black fill and start the rainbow outline coroutine
-	local function createHighlight()
-		for _, player in pairs(players) do
-			if player.Character then
-				-- Check if the player already has a highlight
-				local existingHighlight = player.Character:FindFirstChild("Highlight")
+	-- Function to create a highlight for a player
+	local function createHighlight(character)
+		if character and character:FindFirstChild("HumanoidRootPart") then
+			local highlight = Instance.new("Highlight")
+			highlight.Parent = character
+			highlight.Adornee = character.HumanoidRootPart
+			highlight.FillColor = Color3.fromRGB(0, 0, 0) -- Set fill color to black using Color3.fromRGB
+			highlight.FillTransparency = 1 -- Make the fill color transparent
+			highlight.OutlineTransparency = 0 -- Set the outline to fully visible
+			highlight.OutlineColor = Color3.fromRGB(255, 255, 255) -- Set the outline color to white
+	
+			return highlight -- Return the highlight instance
+		end
+	end
+	
+	-- Function to refresh highlights for all players
+	local function refreshHighlights()
+		for _, targetPlayer in ipairs(game.Players:GetPlayers()) do
+			if targetPlayer ~= player and targetPlayer.Character then
+				local existingHighlight = targetPlayer.Character:FindFirstChildOfClass("Highlight")
 				if not existingHighlight then
-					-- Create the highlight
-					local highlight = Instance.new("Highlight")
-					highlight.Parent = player.Character
-					highlight.Adornee = player.Character
-					highlight.FillTransparency = 0 -- Set fill transparency to 0 for black fill
-					highlight.OutlineTransparency = 0
-					highlight.FillColor = Color3.fromRGB(0,0,0)
-					highlight.OutlineColor = Color3.fromRGB(255, 0, 0) -- Start with red outline
-	
-					-- Coroutine for changing the outline color to create a rainbow effect
-					local function rainbowOutline()
-						local timeElapsed = 0
-						while highlightsActive and highlight.Parent do
-							local hue = (timeElapsed / 5) % 1 -- Cycle hue every 5 seconds
-							highlight.OutlineColor = Color3.fromHSV(hue, 1, 1) -- Set outline color using HSV
-							timeElapsed = timeElapsed + wait(0.1) -- Update every 0.1 seconds
-						end
-					end
-	
-					-- Start the rainbow coroutine
-					highlightCoroutines[player.UserId] = coroutine.create(rainbowOutline)
-					coroutine.resume(highlightCoroutines[player.UserId])
+					createHighlight(targetPlayer.Character) -- Create highlight if it doesn't exist
 				end
 			end
 		end
 	end
 	
-	-- Function to remove highlights and stop the rainbow coroutine
-	local function removeHighlights()
-		for _, player in pairs(players) do
-			if player.Character then
-				-- Check for existing highlights and remove them
-				local existingHighlight = player.Character:FindFirstChild("Highlight")
-				if existingHighlight then
-					existingHighlight:Destroy() -- Remove the highlight
-					highlightCoroutines[player.UserId] = nil -- Remove the coroutine reference
-				end
+	-- Function to handle player added
+	local function onPlayerAdded(newPlayer)
+		newPlayer.CharacterAdded:Connect(function(character)
+			wait(0.1) -- Wait for a moment to ensure character is loaded
+			createHighlight(character) -- Create highlight for the new player's character
+		end)
+	end
+	
+	-- Function to handle player removing (deleting highlight)
+	local function onPlayerRemoving(removedPlayer)
+		if removedPlayer.Character then
+			local highlight = removedPlayer.Character:FindFirstChildOfClass("Highlight")
+			if highlight then
+				highlight:Destroy() -- Remove the highlight if the player leaves
 			end
 		end
 	end
 	
-	btn.MouseButton1Click:Connect(function()
-		highlightsActive = not highlightsActive -- Toggle the state
-		if highlightsActive then
-			createHighlight() -- Create highlights if they are active
-		else
-			removeHighlights() -- Remove highlights if they are inactive
+	-- Monitor player deaths and respawns
+	local function monitorPlayer(player)
+		player.CharacterAdded:Connect(function(character)
+			wait(0.1) -- Ensure character is fully loaded
+			local existingHighlight = character:FindFirstChildOfClass("Highlight")
+			if existingHighlight then
+				existingHighlight:Destroy() -- Remove existing highlight
+			end
+			createHighlight(character) -- Create a new highlight for the respawned character
+		end)
+	end
+	
+	-- Initial setup: add highlights for existing players
+	for _, targetPlayer in ipairs(game.Players:GetPlayers()) do
+		if targetPlayer ~= player then
+			monitorPlayer(targetPlayer) -- Monitor each existing player
+			if targetPlayer.Character then
+				createHighlight(targetPlayer.Character) -- Create highlight if character exists
+			end
 		end
+	end
+	
+	-- Connect events for new players
+	game.Players.PlayerAdded:Connect(onPlayerAdded)
+	game.Players.PlayerRemoving:Connect(onPlayerRemoving)
+	
+	-- Monitor existing players
+	game.Players.PlayerAdded:Connect(function(newPlayer)
+		monitorPlayer(newPlayer)
 	end)
 	
+	-- Refresh highlights every few seconds
+	while true do
+		refreshHighlights()
+		wait(2) -- Adjust refresh interval as needed
+	end
+	
 end
-coroutine.wrap(TQLVHBS_fake_script)()
-local function OQLOZM_fake_script() -- TextLabel.LocalScript 
+coroutine.wrap(FYFX_fake_script)()
+local function GDBWPTE_fake_script() -- TextLabel.LocalScript 
 	local script = Instance.new('LocalScript', TextLabel)
 
 	-- Variables
@@ -303,8 +312,8 @@ local function OQLOZM_fake_script() -- TextLabel.LocalScript
 	end
 	
 end
-coroutine.wrap(OQLOZM_fake_script)()
-local function BDIAGBW_fake_script() -- TextButton_3.LocalScript 
+coroutine.wrap(GDBWPTE_fake_script)()
+local function CGRVPH_fake_script() -- TextButton_3.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_3)
 
 	-- Variables
@@ -325,16 +334,16 @@ local function BDIAGBW_fake_script() -- TextButton_3.LocalScript
 	end
 	
 end
-coroutine.wrap(BDIAGBW_fake_script)()
-local function TNSM_fake_script() -- TextButton_3.LocalScript 
+coroutine.wrap(CGRVPH_fake_script)()
+local function ZSPQHI_fake_script() -- TextButton_3.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_3)
 
 	script.Parent.MouseButton1Click:Connect(function()
 		print("Attached")
 	end)
 end
-coroutine.wrap(TNSM_fake_script)()
-local function IXBPH_fake_script() -- Frame.LocalScript 
+coroutine.wrap(ZSPQHI_fake_script)()
+local function GDLYG_fake_script() -- Frame.LocalScript 
 	local script = Instance.new('LocalScript', Frame)
 
 	local frame = script.Parent
@@ -345,39 +354,4 @@ local function IXBPH_fake_script() -- Frame.LocalScript
 	
 	screengui.ResetOnSpawn = false
 end
-coroutine.wrap(IXBPH_fake_script)()
-local function UWOIY_fake_script() -- TextButton_4.LocalScript 
-	local script = Instance.new('LocalScript', TextButton_4)
-
-	-- Variables
-	local frame = script.Parent
-	local speed = 0.025 -- Speed of the rainbow effect (lower value = faster transition)
-	
-	-- Function to generate rainbow colors
-	local function rainbowColor(hue)
-		return Color3.fromHSV(hue, 1, 1) -- Full saturation and brightness
-	end
-	
-	-- Rainbow loop
-	while true do
-		for hue = 0, 1, speed do
-			frame.BorderColor3 = rainbowColor(hue)
-			wait(0.05) -- Small delay for smooth transition
-		end
-	end
-	
-end
-coroutine.wrap(UWOIY_fake_script)()
-local function XKIANWU_fake_script() -- TextButton_4.LocalScript 
-	local script = Instance.new('LocalScript', TextButton_4)
-
-	script.Parent.MouseButton1Click:Connect(function()
-		local screengui = script.Parent.Parent.Parent
-		local copiedscreengui = screengui:Clone()
-		copiedscreengui.Parent = game.Players.LocalPlayer.PlayerGui
-		wait(0.1)
-		print("Refreshed Script!")
-		screengui:Destroy()
-	end)
-end
-coroutine.wrap(XKIANWU_fake_script)()
+coroutine.wrap(GDLYG_fake_script)()
