@@ -91,7 +91,7 @@ TextButton_4.TextWrapped = true
 
 -- Scripts:
 
-local function KREL_fake_script() -- Frame.LocalScript 
+local function AFEE_fake_script() -- Frame.LocalScript 
 	local script = Instance.new('LocalScript', Frame)
 
 	-- Variables
@@ -112,8 +112,8 @@ local function KREL_fake_script() -- Frame.LocalScript
 	end
 	
 end
-coroutine.wrap(KREL_fake_script)()
-local function NMNKJSV_fake_script() -- TextButton.LocalScript 
+coroutine.wrap(AFEE_fake_script)()
+local function IDRNIR_fake_script() -- TextButton.LocalScript 
 	local script = Instance.new('LocalScript', TextButton)
 
 	-- Variables
@@ -134,8 +134,8 @@ local function NMNKJSV_fake_script() -- TextButton.LocalScript
 	end
 	
 end
-coroutine.wrap(NMNKJSV_fake_script)()
-local function KLUYKLX_fake_script() -- TextButton.LocalScript 
+coroutine.wrap(IDRNIR_fake_script)()
+local function KZBYH_fake_script() -- TextButton.LocalScript 
 	local script = Instance.new('LocalScript', TextButton)
 
 	local flingActive = false -- Tracks if the fling is active
@@ -192,8 +192,8 @@ local function KLUYKLX_fake_script() -- TextButton.LocalScript
 	end)
 	
 end
-coroutine.wrap(KLUYKLX_fake_script)()
-local function CEQGOUM_fake_script() -- TextButton_2.LocalScript 
+coroutine.wrap(KZBYH_fake_script)()
+local function GNHYXV_fake_script() -- TextButton_2.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_2)
 
 	-- Variables
@@ -214,8 +214,8 @@ local function CEQGOUM_fake_script() -- TextButton_2.LocalScript
 	end
 	
 end
-coroutine.wrap(CEQGOUM_fake_script)()
-local function YXIO_fake_script() -- TextButton_2.LocalScript 
+coroutine.wrap(GNHYXV_fake_script)()
+local function TQLVHBS_fake_script() -- TextButton_2.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_2)
 
 	local btn = script.Parent
@@ -281,8 +281,8 @@ local function YXIO_fake_script() -- TextButton_2.LocalScript
 	end)
 	
 end
-coroutine.wrap(YXIO_fake_script)()
-local function IQTBQG_fake_script() -- TextLabel.LocalScript 
+coroutine.wrap(TQLVHBS_fake_script)()
+local function OQLOZM_fake_script() -- TextLabel.LocalScript 
 	local script = Instance.new('LocalScript', TextLabel)
 
 	-- Variables
@@ -303,8 +303,8 @@ local function IQTBQG_fake_script() -- TextLabel.LocalScript
 	end
 	
 end
-coroutine.wrap(IQTBQG_fake_script)()
-local function OOEV_fake_script() -- TextButton_3.LocalScript 
+coroutine.wrap(OQLOZM_fake_script)()
+local function BDIAGBW_fake_script() -- TextButton_3.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_3)
 
 	-- Variables
@@ -325,16 +325,16 @@ local function OOEV_fake_script() -- TextButton_3.LocalScript
 	end
 	
 end
-coroutine.wrap(OOEV_fake_script)()
-local function MNGQEDS_fake_script() -- TextButton_3.LocalScript 
+coroutine.wrap(BDIAGBW_fake_script)()
+local function TNSM_fake_script() -- TextButton_3.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_3)
 
 	script.Parent.MouseButton1Click:Connect(function()
 		print("Attached")
 	end)
 end
-coroutine.wrap(MNGQEDS_fake_script)()
-local function DZCBV_fake_script() -- Frame.LocalScript 
+coroutine.wrap(TNSM_fake_script)()
+local function IXBPH_fake_script() -- Frame.LocalScript 
 	local script = Instance.new('LocalScript', Frame)
 
 	local frame = script.Parent
@@ -345,8 +345,8 @@ local function DZCBV_fake_script() -- Frame.LocalScript
 	
 	screengui.ResetOnSpawn = false
 end
-coroutine.wrap(DZCBV_fake_script)()
-local function KSJJURL_fake_script() -- TextButton_4.LocalScript 
+coroutine.wrap(IXBPH_fake_script)()
+local function UWOIY_fake_script() -- TextButton_4.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_4)
 
 	-- Variables
@@ -367,16 +367,17 @@ local function KSJJURL_fake_script() -- TextButton_4.LocalScript
 	end
 	
 end
-coroutine.wrap(KSJJURL_fake_script)()
-local function TIOH_fake_script() -- TextButton_4.LocalScript 
+coroutine.wrap(UWOIY_fake_script)()
+local function XKIANWU_fake_script() -- TextButton_4.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_4)
 
 	script.Parent.MouseButton1Click:Connect(function()
-		local frame = script.Parent.Parent
-		local copiedframe = frame:Clone()
+		local screengui = script.Parent.Parent.Parent
+		local copiedscreengui = screengui:Clone()
+		copiedscreengui.Parent = game.Players.LocalPlayer.PlayerGui
 		wait(0.1)
 		print("Refreshed Script!")
-		frame:Destroy()
+		screengui:Destroy()
 	end)
 end
-coroutine.wrap(TIOH_fake_script)()
+coroutine.wrap(XKIANWU_fake_script)()
